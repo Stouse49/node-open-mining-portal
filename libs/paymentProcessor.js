@@ -276,6 +276,7 @@ function SetupForPool(logger, poolOptions, setupFinished){
                             case 'orphan':
                             case 'kicked':
                                 r.canDeleteShares = canDeleteShares(r);
+                            case 'queued':
                             case 'generate':
                                 return true;
                             default:
@@ -322,6 +323,8 @@ function SetupForPool(logger, poolOptions, setupFinished){
                             case 'kicked':
                             case 'orphan':
                                 round.workerShares = workerShares;
+                                break;
+                            case 'queued':
                                 break;
 
                             case 'generate':
@@ -461,6 +464,8 @@ function SetupForPool(logger, poolOptions, setupFinished){
                         case 'generate':
                             movePendingCommands.push(['smove', coin + ':blocksPending', coin + ':blocksConfirmed', r.serialized]);
                             roundsToDelete.push(coin + ':shares:round' + r.height);
+                            return;
+                        case 'queued':
                             return;
                     }
 
