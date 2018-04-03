@@ -1,0 +1,7 @@
+{
+    "name": "GoldCoin",
+    "symbol": "GLD",
+    "algorithm": "scrypt",
+    "peerMagic": "fdc2b4dd",
+    "peerMagicTestnet": "fcc5b4dd"
+}
